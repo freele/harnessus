@@ -97,3 +97,12 @@ as arguments for other agents. An agent without skill support reads
 ```bash
 python3 -m unittest discover -s tests
 ```
+
+## Contributing
+
+Reports from real projects matter most at this stage. See
+[CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+[MIT](LICENSE)

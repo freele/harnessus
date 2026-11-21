@@ -8,10 +8,10 @@ src="$(cd "$(dirname "$0")" && pwd)/skill"
 
 for dir in "$@"; do
   mkdir -p "$dir"
-  if [ -e "$dir/harness" ] && [ ! -L "$dir/harness" ]; then
-    echo "skipped $dir/harness: it exists and is not a link" >&2
+  if [ -e "$dir/harnessus" ] && [ ! -L "$dir/harnessus" ]; then
+    echo "skipped $dir/harnessus: it exists and is not a link" >&2
     continue
   fi
-  ln -sfn "$src" "$dir/harness"
-  echo "linked $dir/harness -> $src"
+  ln -sfn "$src" "$dir/harnessus"
+  echo "linked $dir/harnessus -> $src"
 done

@@ -5,9 +5,9 @@ than it gives. It changes nothing; it ends with proposals.
 
 ## 1. Mechanical part
 
-Run `harness.py check`. It verifies:
+Run `harnessus.py check`. It verifies:
 
-- `.harness/harness.toml` parses and every dial has a valid level.
+- `.harnessus/harness.toml` parses and every dial has a valid level.
 - Every dial has a `why`.
 - Every dial above level 0 has a `where` that points to an existing file and
   heading.
@@ -47,5 +47,5 @@ One list, most costly first. For each item: where it is, what is wrong, the
 proposed change. Mark each proposal as remove, merge, rewrite or add. Do not
 edit anything until the human approves.
 
-If this run was asked for by a reviewer stage (`review.harness`), the author of
+If this run was asked for by a reviewer stage (`review.harnessus`), the author of
 the change under review does not run it.

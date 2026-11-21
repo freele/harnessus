@@ -10,7 +10,7 @@ import unittest
 from pathlib import Path
 
 SKILL = Path(__file__).resolve().parents[1] / "skill"
-spec = importlib.util.spec_from_file_location("harness", SKILL / "harness.py")
+spec = importlib.util.spec_from_file_location("harness", SKILL / "harnessus.py")
 harness = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(harness)
 
@@ -52,7 +52,7 @@ class Repo:
         text = text.replace('blocking = ""', 'blocking = "breaks the goal"')
         text = text.replace("commands = []", 'commands = ["pytest"]')
         text = text.replace("risk_areas = []", 'risk_areas = ["money"]')
-        self.write(".harness/harness.toml", edit(text))
+        self.write(".harnessus/harness.toml", edit(text))
         return harness.load(self.root)
 
 
@@ -62,7 +62,7 @@ class CheckTest(unittest.TestCase):
         self.addCleanup(shutil.rmtree, self.repo.root)
         self.repo.write("AGENTS.md", RULES)
         for name in ("STATE.md", "DECISIONS.md", "LOG.md"):
-            self.repo.write(f".harness/{name}", "# x\n")
+            self.repo.write(f".harnessus/{name}", "# x\n")
 
     def errors(self, cfg: dict) -> list[str]:
         return [m for level, m in harness.check(self.repo.root, cfg) if level == "ERROR"]
@@ -75,7 +75,7 @@ class CheckTest(unittest.TestCase):
         self.assertTrue(any("no 'why'" in m for m in self.errors(cfg)))
 
     def test_missing_heading_and_state_file(self) -> None:
-        (self.repo.root / ".harness/STATE.md").unlink()
+        (self.repo.root / ".harnessus/STATE.md").unlink()
         cfg = self.repo.config(lambda t: t.replace("AGENTS.md#Stops", "AGENTS.md#Nowhere"))
         errors = self.errors(cfg)
         self.assertTrue(any("no heading 'Nowhere'" in m for m in errors))
@@ -110,10 +110,10 @@ class MetricsTest(unittest.TestCase):
 
     def test_plan_rewrites_before_and_after_code(self) -> None:
         repo = self.repo
-        repo.commit("docs: plan", {".harness/work/a.md": "one\ntwo\n"})
-        repo.commit("docs: replan", {".harness/work/a.md": "one\ntwo\nthree\n"})
+        repo.commit("docs: plan", {".harnessus/work/a.md": "one\ntwo\n"})
+        repo.commit("docs: replan", {".harnessus/work/a.md": "one\ntwo\nthree\n"})
         repo.commit("feat: code", {"src/a.py": "x = 1\n", "tests/test_a.py": "assert True\n"})
-        repo.commit("docs: replan again", {".harness/work/a.md": "one\n"})
+        repo.commit("docs: replan again", {".harnessus/work/a.md": "one\n"})
         repo.commit("fix: code", {"src/a.py": "x = 2\n"})
         repo.commit("docs: rules", {"AGENTS.md": "# Rules\n"})
         m = harness.metrics(repo.root, repo.config(), None)
@@ -139,7 +139,7 @@ class MetricsTest(unittest.TestCase):
         self.assertEqual(m["since"], rev)
         self.assertEqual(m["commits"], 1)
         self.assertEqual(m["events"], {"init": 1, "friction": 1})
-        log = (repo.root / ".harness/LOG.md").read_text(encoding="utf-8")
+        log = (repo.root / ".harnessus/LOG.md").read_text(encoding="utf-8")
         self.assertIn("| friction | phase 1 | too many / plans / again", log)
 
     def test_globs(self) -> None:

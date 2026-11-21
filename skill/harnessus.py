@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Mechanical helpers for a project harness: check, metrics, log.
 
-Reads .harness/harness.toml in the repository. Standard library only;
+Reads .harnessus/harness.toml in the repository. Standard library only;
 needs Python 3.11 or newer.
 """
 
@@ -19,9 +19,9 @@ from pathlib import Path
 try:
     import tomllib
 except ModuleNotFoundError:  # pragma: no cover
-    sys.exit("harness.py needs Python 3.11 or newer (tomllib)")
+    sys.exit("harnessus.py needs Python 3.11 or newer (tomllib)")
 
-CONFIG = Path(".harness") / "harness.toml"
+CONFIG = Path(".harnessus") / "harness.toml"
 PLAN_CLASSES = ("trivial", "ordinary", "risky")
 REVIEW_STAGES = ("decisions", "plan", "code", "harness")
 SIMPLE_DIALS = ("verify", "state", "stops", "knowledge", "track", "reflect")
@@ -347,7 +347,7 @@ def render(m: dict) -> str:
 def append_event(root: Path, cfg: dict, kind: str, unit: str, note: str) -> str:
     rel = str((cfg.get("paths") or {}).get("log", "")).strip()
     if not rel:
-        sys.exit("paths.log is not set in .harness/harness.toml")
+        sys.exit("paths.log is not set in .harnessus/harness.toml")
     target = root / rel
     clean = lambda s: re.sub(r"\s*[\r\n|]+\s*", " / ", s).strip()  # noqa: E731
     line = f"- {dt.date.today().isoformat()} | {kind} | {clean(unit) or '-'} | {clean(note)}"
@@ -362,7 +362,7 @@ def append_event(root: Path, cfg: dict, kind: str, unit: str, note: str) -> str:
 # ------------------------------------------------------------------ main
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="harness.py", description=__doc__.splitlines()[0])
+    parser = argparse.ArgumentParser(prog="harnessus.py", description=__doc__.splitlines()[0])
     parser.add_argument("--root", type=Path, help="repository root (default: found from the current folder)")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("check", help="verify the harness settings and files")

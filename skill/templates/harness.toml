@@ -1,7 +1,7 @@
 # Harness settings for this repository. A plain file: edit it by hand.
 # Each dial has a level from 0 to 3, a `why` (the failure this level answers)
 # and a `where` (file, or file#Heading, that holds the rule text).
-# Dial meanings and levels: dials.md in the harness shell.
+# Dial meanings and levels: dials.md in harnessus.
 version = 1
 language = "en"
 
@@ -11,10 +11,10 @@ author = ""             # who writes by default
 
 [paths]
 rules = ["AGENTS.md"]   # loaded into every session; kept within budget
-state = ".harness/STATE.md"
-decisions = ".harness/DECISIONS.md"
-log = ".harness/LOG.md"
-plans = [".harness/work/**"]
+state = ".harnessus/STATE.md"
+decisions = ".harnessus/DECISIONS.md"
+log = ".harnessus/LOG.md"
+plans = [".harnessus/work/**"]
 code = ["src/**"]
 tests = ["tests/**"]
 

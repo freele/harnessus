@@ -1,4 +1,6 @@
-# harness
+# harnessus
+
+The harness you didn't know you needed.
 
 A small shell for building and maintaining a project's own working rules for
 coding agents — its harness — instead of adopting a fixed workflow framework.
@@ -41,9 +43,9 @@ is roughly a full spec-driven pipeline. Most projects want most dials at 1.
 
 | Command | Reads | Produces |
 |---|---|---|
-| `harness init` | the repository, its existing rules, a short interview | the harness |
-| `harness check` | the harness itself | what to remove, merge or fix |
-| `harness retro` | how the work went: event log, corrections, git numbers | which dial to move |
+| `harnessus init` | the repository, its existing rules, a short interview | the harness |
+| `harnessus check` | the harness itself | what to remove, merge or fix |
+| `harnessus retro` | how the work went: event log, corrections, git numbers | which dial to move |
 
 All three propose and wait for a human before writing. None of them weakens a
 safety rule the project already has.
@@ -59,7 +61,7 @@ on besides impressions:
   `review`, `stop`, `miss`.
 
 ```bash
-python3 skill/harness.py metrics
+python3 skill/harnessus.py metrics
 ```
 
 The numbers are material for a retro, not verdicts. "Rewritten after code began"
@@ -68,10 +70,10 @@ is a heuristic, and the event log is self-reported.
 ## What lands in your repository
 
 ```
-.harness/harness.toml   dial levels, each with why and where
-.harness/STATE.md       where work stopped (overwritten)
-.harness/DECISIONS.md   what was decided, by whom, in whose words
-.harness/LOG.md         work events, one line each
+.harnessus/harness.toml   dial levels, each with why and where
+.harnessus/STATE.md       where work stopped (overwritten)
+.harnessus/DECISIONS.md   what was decided, by whom, in whose words
+.harnessus/LOG.md         work events, one line each
 AGENTS.md               rule text for every dial above level 0
 ```
 
@@ -84,11 +86,11 @@ they are.
 ./install.sh
 ```
 
-This links `skill/` as `~/.claude/skills/harness`. Pass other skills directories
+This links `skill/` as `~/.claude/skills/harnessus`. Pass other skills directories
 as arguments for other agents. An agent without skill support reads
 `skill/SKILL.md` and follows it.
 
-`harness.py` needs Python 3.11 or newer and nothing else.
+`harnessus.py` needs Python 3.11 or newer and nothing else.
 
 ## Tests
 

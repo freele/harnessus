@@ -1,9 +1,9 @@
 ---
-name: harness
+name: harnessus
 description: Build, check or re-tune this repository's own harness — the working rules for coding agents (planning depth, cross-model review, verification, session state, stops, decisions, work tracking). `init` builds it from repository evidence and a short interview; `check` finds contradictions, redundancy and gaps; `retro` adjusts it from how the work actually went.
 ---
 
-# harness
+# harnessus
 
 The harness is the project's own set of working rules for coding agents. It is
 plain files in the repository. This skill is the shell around it: it helps build
@@ -19,17 +19,17 @@ one:
 | `check` | `check.md` | the harness itself | proposals: remove, merge, fix |
 | `retro` | `retro.md` | how the work went: event log, corrections, git numbers | proposals: which dial to move |
 
-No argument: if `.harness/harness.toml` is missing, say so and offer `init`;
+No argument: if `.harnessus/harness.toml` is missing, say so and offer `init`;
 otherwise run `check`.
 
-`dials.md` defines the eight dials and their levels. `harness.py` does the
+`dials.md` defines the eight dials and their levels. `harnessus.py` does the
 mechanical part: `check`, `metrics`, `log`. It needs Python 3.11 or newer and
 only the standard library.
 
 ## Rules for all three commands
 
 - **Propose, then write.** Show the proposal and wait for the human's approval
-  before changing any rule file or `.harness/harness.toml`.
+  before changing any rule file or `.harnessus/harness.toml`.
 - **Never weaken safety rules.** Rules about money, secrets, destructive
   operations and publishing found in the project are carried over verbatim. Do
   not propose lowering `stops` on your own initiative.

@@ -1,7 +1,7 @@
 # Work log
 
 One line per event, written when it happens. Append with
-`harness.py log <kind> [--unit <unit>] "<note>"`, or by hand in the same format.
+`harnessus.py log <kind> [--unit <unit>] "<note>"`, or by hand in the same format.
 
 Kinds: `friction` (the human says something feels off), `correction` (the human
 corrects the executor or a rule), `replan` (a plan is rewritten; say whether

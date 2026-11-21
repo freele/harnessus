@@ -9,7 +9,7 @@ does not judge the process it worked under.
 
 ## 1. Gather
 
-- `harness.py metrics` for the period since the last `init` or `retro` event.
+- `harnessus.py metrics` for the period since the last `init` or `retro` event.
   That is the default range when the event's note carries `rev=<sha>`.
 - The event log for the same period, every line.
 - Changes to rule files in the period: `git log -p` on `paths.rules`.
@@ -57,7 +57,7 @@ At most a few moves; a retro that changes everything teaches nothing. For each:
 
 After the human decides:
 
-- Apply the approved changes to `.harness/harness.toml` and the rule text.
+- Apply the approved changes to `.harnessus/harness.toml` and the rule text.
   Record each as a decision with the human's words.
-- Run `harness.py check`.
-- Record the run: `harness.py log retro "rev=<current sha> moved: ..."`.
+- Run `harnessus.py check`.
+- Record the run: `harnessus.py log retro "rev=<current sha> moved: ..."`.

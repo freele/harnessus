@@ -1,6 +1,6 @@
 # init — build the harness
 
-Result: `.harness/harness.toml`, rule text for every dial above level 0, and the
+Result: `.harnessus/harness.toml`, rule text for every dial above level 0, and the
 files those levels require. Works on a new repository and on one that already
 has rules or another workflow tool.
 
@@ -14,9 +14,9 @@ has rules or another workflow tool.
 - People and pace: `git shortlog -sn`, commit frequency, branch pattern.
 - Evidence of correctness: test suite, CI configuration, golden cases.
 - Size: lines of code, number of modules.
-- Numbers: write a provisional `.harness/harness.toml` from
+- Numbers: write a provisional `.harnessus/harness.toml` from
   `templates/harness.toml` with only `[paths]` filled in, then run
-  `harness.py metrics`. Plan lines against code lines and plan rewrites after
+  `harnessus.py metrics`. Plan lines against code lines and plan rewrites after
   code began say more than any description of the process.
 
 ## 2. Establish what the project does now
@@ -50,7 +50,7 @@ level below the current one names what the removed step failed to catch.
 
 ## 5. Write, after approval
 
-- `.harness/harness.toml`: every dial with its level, `why` and `where`.
+- `.harnessus/harness.toml`: every dial with its level, `why` and `where`.
 - Rule text for each dial above level 0, in the file `where` points to. The
   wording follows the "The harness says" column of `dials.md`, in the project's
   language and terms.
@@ -61,7 +61,7 @@ level below the current one names what the removed step failed to catch.
 
 ## 6. Close
 
-- Run `harness.py check`. Fix every error before reporting.
-- Record the run: `harness.py log init "rev=<current sha> ..."`.
+- Run `harnessus.py check`. Fix every error before reporting.
+- Record the run: `harnessus.py log init "rev=<current sha> ..."`.
 - Report: the dial table as written, what was not verified, and the first event
   kinds the executor should start logging.

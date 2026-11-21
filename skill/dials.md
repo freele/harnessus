@@ -13,7 +13,7 @@ How levels are set:
 - A level is a project default, not a ceremony for every task. `plan` is set per
   task class and `review` per stage for exactly this reason.
 
-Each dial is recorded in `.harness/harness.toml` with its level, `why` (the
+Each dial is recorded in `.harnessus/harness.toml` with its level, `why` (the
 failure this level answers) and `where` (the file and heading that hold the rule
 text). A setting without a `why` is a defect.
 
@@ -130,7 +130,7 @@ feeling that something is off with nothing to check it against.
 | Level | The harness says |
 |---|---|
 | 0 | Nothing is measured. `check` warns that the harness cannot be evaluated. |
-| 1 | Numbers from git on demand (`harness.py metrics`): plan lines against code lines, plan rewrites, plan rewrites after code began, rule-file churn, share of fixes and reverts. Costs the executor nothing. |
+| 1 | Numbers from git on demand (`harnessus.py metrics`): plan lines against code lines, plan rewrites, plan rewrites after code began, rule-file churn, share of fixes and reverts. Costs the executor nothing. |
 | 2 | Plus an event log, one line per event at the moment it happens: `friction`, `correction`, `replan`, `return`, `review`, `stop`, `miss`. |
 | 3 | Plus, per unit of work, estimate against actual (size, review rounds) and token or cost figures where the executor exposes them. |
 

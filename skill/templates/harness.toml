@@ -1,0 +1,72 @@
+# Harness settings for this repository. A plain file: edit it by hand.
+# Each dial has a level from 0 to 3, a `why` (the failure this level answers)
+# and a `where` (file, or file#Heading, that holds the rule text).
+# Dial meanings and levels: dials.md in the harness shell.
+version = 1
+language = "en"
+
+[executors]
+available = []          # e.g. ["claude-code", "codex"]
+author = ""             # who writes by default
+
+[paths]
+rules = ["AGENTS.md"]   # loaded into every session; kept within budget
+state = ".harness/STATE.md"
+decisions = ".harness/DECISIONS.md"
+log = ".harness/LOG.md"
+plans = [".harness/work/**"]
+code = ["src/**"]
+tests = ["tests/**"]
+
+[budget]
+rules_lines = 300
+
+[dials.plan]            # per task class
+trivial = 0
+ordinary = 1
+risky = 2
+risk_areas = []         # what makes a task risky here
+why = ""
+where = "AGENTS.md#Planning"
+
+[dials.review]          # per stage: 0 nobody, 1 fresh session, 2 other model, 3 human
+decisions = 0
+plan = 0
+code = 1
+harness = 1
+max_rounds = 1
+blocking = ""           # which findings force another round
+reviewer = ""           # exact way to invoke the other model (needed at level 2)
+why = ""
+where = "AGENTS.md#Review"
+
+[dials.verify]
+level = 1
+commands = []           # what is run before work is called done
+why = ""
+where = "AGENTS.md#Verification"
+
+[dials.state]
+level = 1
+why = ""
+where = "AGENTS.md#State"
+
+[dials.stops]
+level = 1
+why = ""
+where = "AGENTS.md#Stops"
+
+[dials.knowledge]
+level = 1
+why = ""
+where = "AGENTS.md#Decisions"
+
+[dials.track]
+level = 1
+why = ""
+where = "AGENTS.md#Tracking"
+
+[dials.reflect]
+level = 1
+why = ""
+where = "AGENTS.md#Harness upkeep"

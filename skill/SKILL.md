@@ -1,5 +1,5 @@
 ---
-name: harnessus
+name: hsus
 description: Build, check or re-tune this repository's own harness — the working rules for coding agents (planning depth, cross-model review, verification, session state, stops, decisions, work tracking). `init` builds it from repository evidence and a short interview; `check` finds contradictions, redundancy and gaps; `retro` adjusts it from how the work actually went.
 ---
 

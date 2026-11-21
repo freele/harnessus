@@ -41,11 +41,13 @@ is roughly a full spec-driven pipeline. Most projects want most dials at 1.
 
 ## Three commands
 
+The skill is installed under the short name `hsus`.
+
 | Command | Reads | Produces |
 |---|---|---|
-| `harnessus init` | the repository, its existing rules, a short interview | the harness |
-| `harnessus check` | the harness itself | what to remove, merge or fix |
-| `harnessus retro` | how the work went: event log, corrections, git numbers | which dial to move |
+| `hsus init` | the repository, its existing rules, a short interview | the harness |
+| `hsus check` | the harness itself | what to remove, merge or fix |
+| `hsus retro` | how the work went: event log, corrections, git numbers | which dial to move |
 
 All three propose and wait for a human before writing. None of them weakens a
 safety rule the project already has.
@@ -86,7 +88,7 @@ they are.
 ./install.sh
 ```
 
-This links `skill/` as `~/.claude/skills/harnessus`. Pass other skills directories
+This links `skill/` as `~/.claude/skills/hsus`. Pass other skills directories
 as arguments for other agents. An agent without skill support reads
 `skill/SKILL.md` and follows it.
 

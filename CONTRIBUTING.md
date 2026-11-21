@@ -5,7 +5,7 @@ is evidence from other projects.
 
 ## Most useful
 
-A report from running `harnessus init`, `check` or `retro` on a real repository:
+A report from running `hsus init`, `check` or `retro` on a real repository:
 
 - Which interview questions changed a dial, and which changed nothing.
 - Which dial came out wrong, and what showed it.
